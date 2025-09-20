@@ -3,6 +3,12 @@ package br.com.view;
 import br.com.controller.Controller;
 import br.com.model.Cliente;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import br.com.dao.Conexao;
+import br.com.dao.ClienteDao;
+
+
 
 public class ClienteView {
 	
@@ -86,12 +92,18 @@ public class ClienteView {
 	}
 	
 	private void excluirCliente() {
+		//Foi adicionado a parte de listar cliente na hora da listagem, para uma melhor visualização do usuário
+		System.out.println("");
+		controller.listarClientes();
+		
 		System.out.println("ID do cliente a excluir: ");
 		int id = entrada.nextInt();
 		
+		controller.excluir(id);
+		
 		entrada.nextLine();
 		
-		controller.excluir(id);
+		
 		
 	}
 

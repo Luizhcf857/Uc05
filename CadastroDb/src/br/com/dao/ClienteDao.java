@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 import br.com.model.Cliente;//importei o modelo de cliente
+import br.com.controller.Controller;
 
 public class ClienteDao {
 	//foi criada uma classe para inserir os dados, recebendo o parametro do tipo cliente
@@ -77,8 +78,11 @@ public class ClienteDao {
 		
 		
 	}
-	
-	public void excluir(int id) {
+
+	public  void excluir(int id) {
+
+		
+		
 		String sql = "DELETE FROM clientes WHERE id = ?";
 		
 		try(Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -87,9 +91,10 @@ public class ClienteDao {
 			stmt.executeUpdate();
 			
 		}catch(SQLException e) {
-			System.err.println("Erro ao excluir cliente");
+			System.err.println("Erro ao excluir cliente" + e.getMessage());
 			
 		}
+		
 		
 	}
 	

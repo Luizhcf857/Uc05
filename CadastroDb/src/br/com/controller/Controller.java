@@ -1,6 +1,5 @@
 package br.com.controller;
 
-import java.sql.*;
 import java.util.List;
 import br.com.dao.ClienteDao;
 import br.com.model.Cliente;
@@ -24,6 +23,19 @@ public class Controller {
 			System.out.println("Email invalido!");
 			return;
 		}
+
+		//Foi feita uma comparação com a variável telefone para medir o tamanho do num. de telefone
+		if(cliente.getTelefone().length() < 11) {
+			System.out.println("Número de telefone inválido!");
+			return;
+		}
+		
+		//Foi realizada uma comparação para medir o cpf
+		if(cliente.getCpf().length() < 11) {
+			System.out.println("Cpf inválido!");
+			return;
+		}
+		
 		dao.inserir(cliente);
 		
 	}
